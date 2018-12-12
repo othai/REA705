@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Privacy Canary</title>
+		<link href="css/styleSheet.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="app/popup.js"></script>
+	</head>
+	<body>
+		<div id="header">
+			<img src="icons/icon-48.png" id="canaryImage" />
+			<h1 id="popup-title">Privacy Canary</h1>
+		</div>
+		<div class="counters">Total scripts running on this page: <span id="scriptsCounter">0</span>
+			<div>
+				<!--<button id="block-scripts">Block scripts</button>
+				<button id="view-script-urls">View URLs</button>-->
+			</div>
+		</div>
+		<div class="counters">Total cookies queried by this page: <span id="cookiesRequestedCounter">0</span>
+			<div>
+				<!--<button id="view-cookies-requested-urls">View URLs</button>-->
+			</div>
+		</div>
+		<!---
+			<div>Total cookies created by this page: <span id="cookiesRemovedCounter">0</span>
+			<div>
+				<button id="view-cookies-removed-urls">View URL</button>
+			</div>
+		-->
+		</div>
+	</body>
+</html>

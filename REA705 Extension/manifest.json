@@ -1,0 +1,70 @@
+{
+ "manifest_version": 2,
+ "name": "Privacy Canary",
+ "description": "Proof-of-Concept browser extension to detect user tracking and browser fingerprinting.",
+ "version": "1.1",
+ "author": "Oscar Thai",
+ 
+ "icons": {
+	"128": "icons/icon-128.png",
+	"48": "icons/icon-48.png",
+	"16": "icons/icon-16.png"
+ },
+ 
+ "browser_action": {
+	"default_icon": "icons/icon-16.png",
+	"default_popup": "popup.html"
+  },
+
+ "background": {
+	"scripts": [
+		"app/background.js"
+	]
+ },
+
+ "content_scripts": [
+	{
+		"matches": [
+			"<all_urls>"
+		],
+		"js": [
+			"app/injector.js"
+		],
+		"run_at": "document_start"
+	},
+	{
+		"matches": [
+			"<all_urls>"
+		],
+		"js": [
+			"app/domChanges.js"
+		],
+		"run_at": "document_idle"
+	},
+	{
+		"matches": [
+			"<all_urls>"
+		],
+		"js": [
+			"app/formFields.js"
+		]
+	}
+ ],
+
+ "permissions": [
+	"activeTab",
+	"tabs",
+	"cookies",
+	"privacy",
+	"webRequest",
+	"webRequestBlocking",
+	"<all_urls>"
+ ],
+
+ "web_accessible_resources": [
+	"app/injectme.js"
+ ],
+
+ "incognito": "split"
+
+}
