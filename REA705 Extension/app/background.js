@@ -70,12 +70,15 @@ var onNewTabCreatedListener = function(newTab) {
 
 }
 
+// Function that implements the Chrome API webRequest onBeforeSendHeaders listener. This is used to intercept any
+// HTTP headers that are being sent from the browser to the website before it is sent so that may be observed or 
+// modified.
 var onBeforeSendHeadersListener = function(details) {
 
     // Google assigns tabId = -1 when opening new tab suggestion page
     // if tabId equals -1, request is not related to tab and ignore request.
     // else parse request and retrieve associated cookies and script urls, if any
-    console.log(details);
+    //console.log(details);
     var objectUpdated = false;
     if (details.tabId === -1) {
         //console.log("ignored tab");
@@ -84,7 +87,7 @@ var onBeforeSendHeadersListener = function(details) {
 
     if (doesCookieExist(details)) {
         //console.log("cookie queried");
-        console.log(details)
+        //console.log(details)
         tabDataObject[details.tabId].cookiesRequested++;
         objectUpdated = true;
     } else {
@@ -118,6 +121,7 @@ var updateTabData = function() {
 
 }
 
+// Listener functions from Chrome API
 chrome.webRequest.onBeforeRequest.addListener(onBeforeRequestListener, {
     urls: ["*://*/*"]
 }, ["requestBody","blocking"]);
